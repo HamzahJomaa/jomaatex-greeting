@@ -20,6 +20,10 @@ app.use(bodyParser.urlencoded({extend: false}));
 app.post("/post",async (req,res) => {
     let {name,phoneNumber,city} = req.body
     let promoCode = crypto.randomBytes(3).toString("hex").toUpperCase()
+    let checkUser = await User.find({phoneNumber})
+    if (checkUser.length > 0){
+        return res.redirect("back")
+    }
     await User.create({fullName:name,phoneNumber,city,promoCode})
     let filename = crypto.randomBytes(16).toString("hex")
     res.render("thank-you-page",{filename,promoCode})
