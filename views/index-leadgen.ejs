@@ -85,7 +85,7 @@
 										Ramadan Kareem
 									</h1>
 									<div class="description">
-										Fill Up the Following Form and get a voucher for 300,000L.L with a Greeting Card with your name
+										Fill Up the Following Form and get the chance to win a voucher for 250,000LBP with a Greeting Card with your name
 									</div>
 									<a href="#intro-features" class="arrow-down anim-pulse scroll-to"><i class="fas fa-angle-down"></i></a>
 								</div><!-- .banner-center-box end -->
@@ -122,7 +122,6 @@
 										<div class="box-content">
 											<div class="box-title">
 												<h3 class="title">300,000LBP Voucher</h3>
-												<p>Lorem Ipsum</p>
 											</div><!-- .box-title end -->
 											<form action="./post" method="post" class="form-inline redirected">
 												<div class="cs-notifications">
@@ -137,7 +136,10 @@
 												<div class="form-group">
 													<input type="text" name="city" id="cs2Name" class="form-control" placeholder="City / Country *">
 												</div><!-- .form-group end -->
-
+												<div class="form-group">
+													<input type="text" name="instagram" id="cs2Name" class="form-control" placeholder="Instagram Username *">
+												</div><!-- .form-group end -->
+												<% if (error) { %> <p class="my-2" style="color: red">User Already Registered</p> <% }%>
 												<div class="form-group">
 													<input type="submit" class="form-control" value="Submit">
 												</div><!-- .form-group end -->

@@ -18,6 +18,10 @@ const UserSchema = Schema({
         type: String,
         required: [true, "country is required"],
     },
+    instagram:{
+        type: String,
+            required: [true, "Instagram is Required2"]
+    }
 },{ timestamps: true })
 
 

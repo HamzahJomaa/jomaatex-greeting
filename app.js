@@ -18,36 +18,35 @@ app.use(bodyParser.urlencoded({extend: false}));
 
 
 app.post("/post",async (req,res) => {
-    let {name,phoneNumber,city} = req.body
+    let {name,phoneNumber,city,instagram} = req.body
     let promoCode = crypto.randomBytes(3).toString("hex").toUpperCase()
-    let checkUser = await User.find({phoneNumber})
+    let checkUser = await User.find({instagram})
     if (checkUser.length > 0){
-        return res.redirect("back")
+        return res.render("index-leadgen",{error:"User Already Registered"})
     }
-    await User.create({fullName:name,phoneNumber,city,promoCode})
+    await User.create({fullName:name,phoneNumber,city,promoCode,instagram})
     let filename = crypto.randomBytes(16).toString("hex")
-    res.render("thank-you-page",{filename,promoCode})
-    // const python = spawn('python3', ['Public/pythonCode.py', name, filename]);
-    //
-    // python.stdout.on('data', (data) => {
-    //     console.log('pattern: ', data.toString());
-    // });
-    //
-    // python.stderr.on('data', (data) => {
-    //     console.error('err: ', data.toString());
-    // });
-    //
-    // python.on('error', (error) => {
-    //     console.error('error: ', error.message);
-    // });
-    //
-    // python.on('close', (code) => {
-    //     console.log('child process exited with code ', code);
-    //     res.render("thank-you-page",{filename: `${filename}.png`})
-    // });
+    const python = spawn('python3', ['Public/pythonCode.py', name, filename]);
+
+    python.stdout.on('data', (data) => {
+        console.log('pattern: ', data.toString());
+    });
+
+    python.stderr.on('data', (data) => {
+        console.error('err: ', data.toString());
+    });
+
+    python.on('error', (error) => {
+        console.error('error: ', error.message);
+    });
+
+    python.on('close', (code) => {
+        console.log('child process exited with code ', code);
+        res.render("thank-you-page",{filename: `${filename}.jpeg`})
+    });
 })
 app.get("/",(req,res)=>{
-    res.render("index-leadgen")
+    return res.render("index-leadgen",{error: ""})
 })
 
 connectDb(() => {
