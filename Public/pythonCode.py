@@ -34,7 +34,7 @@ font = ImageFont.truetype('Public/font.ttf',30)
 img_pil = Image.fromarray(img_rgb)
 draw = ImageDraw.Draw(img_pil)
 text_width, text_height = draw.textsize(text_to_be_reshaped.encode('utf8'))
-draw.text((image_height/2,1100),  bidi_text,anchor="ms", font = font, fill = (0,0,0,1))
+draw.text((image_height/2,1100),  name,anchor="ms", font = font, fill = (0,0,0,1))
 img = np.array(img_pil)
 
 final_rgb = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
