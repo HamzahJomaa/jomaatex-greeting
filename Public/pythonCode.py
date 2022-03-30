@@ -30,7 +30,7 @@ image_width, image_height , t = img_rgb.shape
 
 
 
-font = ImageFont.truetype('Public/font.ttf',50)
+font = ImageFont.truetype('Public/font.ttf',30)
 img_pil = Image.fromarray(img_rgb)
 draw = ImageDraw.Draw(img_pil)
 text_width, text_height = draw.textsize(text_to_be_reshaped.encode('utf8'))
