@@ -1360,8 +1360,10 @@ input[type="submit"].form-control:focus {
 =================== */
 .logo {
   display: inline-block; }
-  .logo img {
-    max-height: 100%; }
+  .banner-logo,.logo img {
+    max-height: 100%;
+    width: 20%;
+  }
   .logo h3,
   .logo h3 + span {
     display: none; }
@@ -1462,7 +1464,11 @@ input[type="submit"].form-control:focus {
 
 @media (max-width: 992px) {
   #header-bar-1 .hb-content {
-    justify-content: center; } }
+    justify-content: center; }
+  .banner-logo,.logo img{
+    width: 40%;
+  }
+}
 
 /**
   * -------------------------------------------------------------------------------
