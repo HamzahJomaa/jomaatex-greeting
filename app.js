@@ -19,6 +19,10 @@ app.use(bodyParser.urlencoded({extend: false}));
 
 app.post("/post",async (req,res) => {
     let {name,phoneNumber,city,instagram} = req.body
+    console.log({name,phoneNumber,city,instagram})
+    if (!name || !phoneNumber || !city || !instagram || name === "" || phoneNumber === "" || city === "" || instagram === ""){
+        return res.redirect("back")
+    }
     let promoCode = crypto.randomBytes(3).toString("hex").toUpperCase()
     let checkUser = await User.find({instagram})
     if (checkUser.length > 0){
